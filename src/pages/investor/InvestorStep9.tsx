@@ -10,10 +10,8 @@ const InvestorStep9 = () => {
       title="Individual Investors"
       currentStep={9}
       totalSteps={11}
-      nextButtonText="Next"
-      onNext={() => {}}
       showPrevious={true}
-      onPrevious={() => {}}
+      previousPath="/investor/step8"
     >
       <div className="py-6">
         <h1 className="text-xl font-semibold mb-6">Individual Investors Contact Details [duplicate as required]</h1>

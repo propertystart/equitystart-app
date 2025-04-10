@@ -10,10 +10,8 @@ const InvestorStep11 = () => {
       title="Investor Logout"
       currentStep={11}
       totalSteps={11}
-      nextButtonText="Finish"
-      onNext={() => {}}
       showPrevious={true}
-      onPrevious={() => {}}
+      previousPath="/investor/step10"
     >
       <div className="py-6">
         <h1 className="text-xl font-semibold mb-6">You have just taken the first step in building your EquityStart investment portfolio</h1>

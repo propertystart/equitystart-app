@@ -10,10 +10,8 @@ const InvestorStep6 = () => {
       title="Invest Now pg 1"
       currentStep={6}
       totalSteps={11}
-      nextButtonText="Next"
-      onNext={() => {}}
       showPrevious={true}
-      onPrevious={() => {}}
+      previousPath="/investor/step5"
     >
       <div className="py-6">
         <h1 className="text-xl font-semibold mb-4">Let's get started. But first, we need to cross our t's and dot our i's....</h1>

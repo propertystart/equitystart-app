@@ -2,7 +2,7 @@
 import React, { ReactNode } from 'react';
 import Logo from './Logo';
 import FormProgressBar from './FormProgressBar';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ScrollArea } from './ui/scroll-area';
 import { Button } from './ui/button';
 
@@ -11,11 +11,9 @@ interface ApplicationFormWrapperProps {
   title: string;
   currentStep: number;
   totalSteps: number;
-  onNext?: () => void;
-  onPrevious?: () => void;
-  showPrevious?: boolean;
   nextButtonText?: string;
   nextPath?: string;
+  showPrevious?: boolean;
   previousPath?: string;
 }
 
@@ -24,35 +22,11 @@ const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
   title,
   currentStep,
   totalSteps,
-  onNext,
-  onPrevious,
-  showPrevious = true,
   nextButtonText = 'Next',
   nextPath,
+  showPrevious = true,
   previousPath
 }) => {
-  const navigate = useNavigate();
-  
-  const handleNext = () => {
-    if (onNext) {
-      onNext();
-    }
-    
-    if (nextPath) {
-      navigate(nextPath);
-    }
-  };
-  
-  const handlePrevious = () => {
-    if (onPrevious) {
-      onPrevious();
-    }
-    
-    if (previousPath) {
-      navigate(previousPath);
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       <header className="py-4 shadow-sm">
@@ -76,34 +50,22 @@ const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
         </div>
         
         <div className="max-w-2xl mx-auto mt-6 flex justify-between">
-          {showPrevious && currentStep > 1 ? (
-            previousPath ? (
-              <Link to={previousPath}>
-                <Button variant="outline" className="bg-gray-200 text-gray-800 hover:bg-gray-300">
-                  Previous
-                </Button>
-              </Link>
-            ) : (
-              <Button variant="outline" onClick={handlePrevious} className="bg-gray-200 text-gray-800 hover:bg-gray-300">
+          {showPrevious && previousPath ? (
+            <Link to={previousPath}>
+              <Button variant="outline" className="bg-gray-200 text-gray-800 hover:bg-gray-300">
                 Previous
               </Button>
-            )
+            </Link>
           ) : (
             <div></div>
           )}
           
-          {nextPath ? (
+          {nextPath && (
             <Link to={nextPath}>
               <Button className="bg-blue-900 text-white hover:bg-blue-800">
                 {nextButtonText}
               </Button>
             </Link>
-          ) : onNext ? (
-            <Button onClick={handleNext} className="bg-blue-900 text-white hover:bg-blue-800">
-              {nextButtonText}
-            </Button>
-          ) : (
-            <div></div>
           )}
         </div>
       </main>

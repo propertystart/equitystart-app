@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ApplicationFormWrapper from '@/components/ApplicationFormWrapper';
 
@@ -41,10 +42,8 @@ const InvestorStep10 = () => {
       title="Investment Criteria"
       currentStep={10}
       totalSteps={11}
-      nextButtonText="Next"
-      nextPath="/investor/step11"
-      previousPath="/investor/step9"
       showPrevious={true}
+      previousPath="/investor/step9"
     >
       <div className="py-6">
         <h1 className="text-xl font-semibold text-center mb-6">Now all of that's out of the way it's time to join a new generation of investors</h1>
@@ -282,6 +281,12 @@ const InvestorStep10 = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link to="/investor/step11">
+            <Button className="bg-blue-900 text-white hover:bg-blue-800">Next</Button>
+          </Link>
         </div>
       </div>
     </ApplicationFormWrapper>

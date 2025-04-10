@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -10,10 +9,8 @@ const InvestorStep4 = () => {
       title="Learn More"
       currentStep={4}
       totalSteps={11}
-      nextButtonText="Next"
-      onNext={() => {}}
       showPrevious={true}
-      onPrevious={() => {}}
+      previousPath="/investor/step3"
     >
       <div className="py-6">
         <h1 className="text-xl font-semibold mb-4">Invest on your own terms, day or night</h1>

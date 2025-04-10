@@ -3,6 +3,7 @@ import React from 'react';
 import Logo from '@/components/Logo';
 import { Button } from '@/components/ui/button';
 import ApplicationFormWrapper from '@/components/ApplicationFormWrapper';
+import { Link } from 'react-router-dom';
 
 const InvestorStep1 = () => {
   return (
@@ -10,8 +11,6 @@ const InvestorStep1 = () => {
       title="Find out how"
       currentStep={1}
       totalSteps={11}
-      nextButtonText="Start Investing"
-      nextPath="/investor/step2"
       showPrevious={false}
     >
       <div className="py-6">
@@ -45,6 +44,12 @@ const InvestorStep1 = () => {
             <span>All transactions and trading occur in a secure, decentralised Blockchain</span>
           </li>
         </ul>
+
+        <div className="mt-6 text-center">
+          <Link to="/investor/step2">
+            <Button className="bg-blue-900 text-white hover:bg-blue-800">Start Investing</Button>
+          </Link>
+        </div>
       </div>
     </ApplicationFormWrapper>
   );

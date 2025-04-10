@@ -10,10 +10,8 @@ const InvestorStep6a = () => {
       title="Accountants Certificate"
       currentStep={6}
       totalSteps={11}
-      nextButtonText="Next"
-      onNext={() => {}}
       showPrevious={true}
-      onPrevious={() => {}}
+      previousPath="/investor/step6"
     >
       <div className="py-6">
         <h1 className="text-xl font-bold mb-4">Accountant's Certificate [Auto-populate with investor name and send to accountant]</h1>

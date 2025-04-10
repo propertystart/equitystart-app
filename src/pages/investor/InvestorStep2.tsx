@@ -10,10 +10,8 @@ const InvestorStep2 = () => {
       title="Start Investing"
       currentStep={2}
       totalSteps={11}
-      nextButtonText="Next"
-      onNext={() => {}}
       showPrevious={true}
-      onPrevious={() => {}}
+      previousPath="/investor/step1"
     >
       <div className="py-6">
         <h1 className="text-xl font-semibold mb-6">Become a better investor on the go and <strong>share in property value increases</strong> without the headache of owning the property</h1>
@@ -42,9 +40,6 @@ const InvestorStep2 = () => {
         </div>
         
         <div className="mt-8 flex justify-center gap-4">
-          <Link to="/investor/step3">
-            <Button className="bg-blue-900 text-white hover:bg-blue-800">Invest Now</Button>
-          </Link>
           <Link to="/investor/step3">
             <Button className="bg-blue-900 text-white hover:bg-blue-800">How it all works</Button>
           </Link>

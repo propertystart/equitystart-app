@@ -4,6 +4,7 @@ import { DollarSign, User, TrendingUp } from 'lucide-react';
 import Logo from '@/components/Logo';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const InvestorLearn = () => {
   return (
@@ -67,8 +68,10 @@ const InvestorLearn = () => {
           </div>
           
           <div className="text-center">
-            <Link to="/investor/step1" className="bg-blue-900 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition-colors">
-              Start Investing Now
+            <Link to="/investor/step1">
+              <Button className="bg-blue-900 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition-colors">
+                Start Investing Now
+              </Button>
             </Link>
           </div>
         </section>
