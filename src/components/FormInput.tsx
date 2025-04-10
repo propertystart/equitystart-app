@@ -9,6 +9,8 @@ interface FormInputProps {
   placeholder?: string;
   required?: boolean;
   className?: string;
+  name: string; // Add the name property to the interface
+  disabled?: boolean; // Add disabled property for disabled inputs
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -19,6 +21,8 @@ const FormInput: React.FC<FormInputProps> = ({
   placeholder = '',
   required = false,
   className = '',
+  name,
+  disabled = false,
 }) => {
   return (
     <div className={`mb-4 ${className}`}>
@@ -32,6 +36,8 @@ const FormInput: React.FC<FormInputProps> = ({
         placeholder={placeholder}
         required={required}
         className="form-input"
+        name={name}
+        disabled={disabled}
       />
     </div>
   );

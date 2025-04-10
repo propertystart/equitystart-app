@@ -41,6 +41,7 @@ interface ApplicationData {
   currentPropertyWorth?: number;
   currentEquity?: number;
   loanPurpose?: 'unlock' | 'renovation' | 'personal' | 'other';
+  needBankAssistance?: 'yes' | 'no'; // Added missing property
   
   // Employment Information
   employmentStatus?: 'fulltime' | 'parttime' | 'selfemployed';
