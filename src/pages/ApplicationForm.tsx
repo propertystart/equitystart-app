@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from "@/hooks/use-toast";
 import { useAppContext } from '@/contexts/AppContext';
@@ -19,13 +18,6 @@ const ApplicationForm = () => {
   const [formData, setFormData] = useState({
     ...applicationData
   });
-  
-  useEffect(() => {
-    // Update application context with current step
-    updateApplicationData({ currentStep });
-    // Scroll to top when step changes
-    window.scrollTo(0, 0);
-  }, [currentStep, updateApplicationData]);
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

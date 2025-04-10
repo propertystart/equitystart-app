@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import Logo from './Logo';
 import FormProgressBar from './FormProgressBar';
 import { Link } from 'react-router-dom';
+import { ScrollArea } from './ui/scroll-area';
 
 interface ApplicationFormWrapperProps {
   children: ReactNode;
@@ -38,11 +39,13 @@ const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto px-4 py-8">
+      <main className="flex-grow container mx-auto px-4 py-8 overflow-y-auto">
         <FormProgressBar currentStep={currentStep} totalSteps={totalSteps} />
         
         <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
-          {children}
+          <ScrollArea className="h-[60vh] pr-4">
+            {children}
+          </ScrollArea>
         </div>
         
         <div className="max-w-2xl mx-auto mt-6 flex justify-between">
