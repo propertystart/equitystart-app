@@ -2,8 +2,9 @@
 import React, { ReactNode } from 'react';
 import Logo from './Logo';
 import FormProgressBar from './FormProgressBar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ScrollArea } from './ui/scroll-area';
+import { Button } from './ui/button';
 
 interface ApplicationFormWrapperProps {
   children: ReactNode;
@@ -14,6 +15,8 @@ interface ApplicationFormWrapperProps {
   onPrevious?: () => void;
   showPrevious?: boolean;
   nextButtonText?: string;
+  nextPath?: string;
+  previousPath?: string;
 }
 
 const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
@@ -24,8 +27,32 @@ const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
   onNext,
   onPrevious,
   showPrevious = true,
-  nextButtonText = 'Next'
+  nextButtonText = 'Next',
+  nextPath,
+  previousPath
 }) => {
+  const navigate = useNavigate();
+  
+  const handleNext = () => {
+    if (onNext) {
+      onNext();
+    }
+    
+    if (nextPath) {
+      navigate(nextPath);
+    }
+  };
+  
+  const handlePrevious = () => {
+    if (onPrevious) {
+      onPrevious();
+    }
+    
+    if (previousPath) {
+      navigate(previousPath);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="py-4 shadow-sm">
@@ -50,17 +77,33 @@ const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
         
         <div className="max-w-2xl mx-auto mt-6 flex justify-between">
           {showPrevious && currentStep > 1 ? (
-            <button onClick={onPrevious} className="bg-gray-200 text-gray-800 py-2 px-6 rounded hover:bg-gray-300 transition-colors">
-              Previous
-            </button>
+            previousPath ? (
+              <Link to={previousPath}>
+                <Button variant="outline" className="bg-gray-200 text-gray-800 hover:bg-gray-300">
+                  Previous
+                </Button>
+              </Link>
+            ) : (
+              <Button variant="outline" onClick={handlePrevious} className="bg-gray-200 text-gray-800 hover:bg-gray-300">
+                Previous
+              </Button>
+            )
           ) : (
             <div></div>
           )}
           
-          {onNext && (
-            <button onClick={onNext} className="btn-primary">
+          {nextPath ? (
+            <Link to={nextPath}>
+              <Button className="bg-blue-900 text-white hover:bg-blue-800">
+                {nextButtonText}
+              </Button>
+            </Link>
+          ) : onNext ? (
+            <Button onClick={handleNext} className="bg-blue-900 text-white hover:bg-blue-800">
               {nextButtonText}
-            </button>
+            </Button>
+          ) : (
+            <div></div>
           )}
         </div>
       </main>

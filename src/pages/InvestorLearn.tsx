@@ -67,8 +67,8 @@ const InvestorLearn = () => {
           </div>
           
           <div className="text-center">
-            <Link to="/investor/step1" className="btn-primary">
-              Contact Us to Learn More
+            <Link to="/investor/step1" className="bg-blue-900 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition-colors">
+              Start Investing Now
             </Link>
           </div>
         </section>
