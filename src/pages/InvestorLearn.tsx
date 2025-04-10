@@ -3,6 +3,7 @@ import React from 'react';
 import { DollarSign, User, TrendingUp } from 'lucide-react';
 import Logo from '@/components/Logo';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 
 const InvestorLearn = () => {
   return (
@@ -66,9 +67,9 @@ const InvestorLearn = () => {
           </div>
           
           <div className="text-center">
-            <a href="mailto:investors@equitystart.com" className="btn-primary">
+            <Link to="/investor/step1" className="btn-primary">
               Contact Us to Learn More
-            </a>
+            </Link>
           </div>
         </section>
       </main>
