@@ -79,17 +79,27 @@ const InvestorStep10 = () => {
               {/* Income options */}
               <div className="flex items-center gap-2">
                 <input type="checkbox" id="income1" />
-                <label htmlFor="income1">< $150,000</label>
+                <label htmlFor="income1">&lt; $150,000</label>
               </div>
               <div className="flex items-center gap-2">
                 <input type="checkbox" id="income2" />
                 <label htmlFor="income2">$150,000-$200,000</label>
               </div>
-              {/* ... more income options ... */}
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="income3" />
+                <label htmlFor="income3">$200,000-$250,000</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="income4" />
+                <label htmlFor="income4">$250,000-$300,000</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="income5" />
+                <label htmlFor="income5">&gt; $300,000</label>
+              </div>
             </div>
           </div>
           
-          {/* Continue with similar formatting for the remaining sections */}
           <div>
             <p className="font-semibold mb-2">I would prefer to invest in</p>
             <div className="space-y-1">
@@ -101,7 +111,30 @@ const InvestorStep10 = () => {
                 <input type="checkbox" id="state2" />
                 <label htmlFor="state2">VIC</label>
               </div>
-              {/* ... more state options ... */}
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="state3" />
+                <label htmlFor="state3">QLD</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="state4" />
+                <label htmlFor="state4">SA</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="state5" />
+                <label htmlFor="state5">WA</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="state6" />
+                <label htmlFor="state6">TAS</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="state7" />
+                <label htmlFor="state7">NT</label>
+              </div>
+              <div className="flex items-center gap-2">
+                <input type="checkbox" id="state8" />
+                <label htmlFor="state8">ACT</label>
+              </div>
             </div>
           </div>
         </div>
