@@ -15,6 +15,8 @@ interface ApplicationFormWrapperProps {
   nextPath?: string;
   showPrevious?: boolean;
   previousPath?: string;
+  onNext?: () => void;  // Added this prop
+  onPrevious?: () => void;  // Added this prop
 }
 
 const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
@@ -25,8 +27,22 @@ const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
   nextButtonText = 'Next',
   nextPath,
   showPrevious = true,
-  previousPath
+  previousPath,
+  onNext,  // Added this prop
+  onPrevious  // Added this prop
 }) => {
+  const handleNext = () => {
+    if (onNext) {
+      onNext();
+    }
+  };
+
+  const handlePrevious = () => {
+    if (onPrevious) {
+      onPrevious();
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="py-4 shadow-sm">
@@ -50,23 +66,40 @@ const ApplicationFormWrapper: React.FC<ApplicationFormWrapperProps> = ({
         </div>
         
         <div className="max-w-2xl mx-auto mt-6 flex justify-between">
-          {showPrevious && previousPath ? (
-            <Link to={previousPath}>
-              <Button variant="outline" className="bg-gray-200 text-gray-800 hover:bg-gray-300">
+          {showPrevious ? (
+            previousPath ? (
+              <Link to={previousPath}>
+                <Button variant="outline" className="bg-gray-200 text-gray-800 hover:bg-gray-300">
+                  Previous
+                </Button>
+              </Link>
+            ) : (
+              <Button 
+                variant="outline" 
+                className="bg-gray-200 text-gray-800 hover:bg-gray-300"
+                onClick={handlePrevious}
+              >
                 Previous
               </Button>
-            </Link>
+            )
           ) : (
             <div></div>
           )}
           
-          {nextPath && (
+          {nextPath ? (
             <Link to={nextPath}>
               <Button className="bg-blue-900 text-white hover:bg-blue-800">
                 {nextButtonText}
               </Button>
             </Link>
-          )}
+          ) : onNext ? (
+            <Button 
+              className="bg-blue-900 text-white hover:bg-blue-800"
+              onClick={handleNext}
+            >
+              {nextButtonText}
+            </Button>
+          ) : null}
         </div>
       </main>
       
