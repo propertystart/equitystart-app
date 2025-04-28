@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo';
@@ -16,30 +17,11 @@ const ApplicationConfirmation = () => {
   const handleUploadApplication = async () => {
     setIsUploading(true);
     try {
-      // First check if user is authenticated
-      const { data: { session }, error: authError } = await supabase.auth.getSession();
-      
-      if (authError || !session) {
-        // If not authenticated, sign in anonymously
-        const { data: signInData, error: signInError } = await supabase.auth.signInAnonymously();
-        
-        if (signInError) {
-          throw new Error(`Authentication error: ${signInError.message}`);
-        }
-      }
-      
-      // Get current user
-      const { data: { user }, error: userError } = await supabase.auth.getUser();
-      
-      if (userError || !user) {
-        throw new Error('Failed to get user information');
-      }
-      
-      // Now proceed with the insert with the authenticated user's ID
+      // Skip authentication and directly insert the data
+      // Using the borrower_id as a unique identifier instead of user_id
       const { error } = await supabase
         .from('tblborrowers')
         .insert([{
-          user_id: user.id,
           borrower_id: borrowerId || 'fjbfshtheap847dd9',
           application_id: applicationId || 'jshihifb3802n',
           name: applicationData.name,
