@@ -1,6 +1,6 @@
 
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import { useAppContext } from '@/contexts/AppContext';
 import Footer from '@/components/Footer';
@@ -9,7 +9,6 @@ import { toast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
 const ApplicationConfirmation = () => {
-  const navigate = useNavigate();
   const { applicationData } = useAppContext();
   const { borrowerId, applicationId } = applicationData;
   const [isUploading, setIsUploading] = useState(false);
@@ -17,8 +16,6 @@ const ApplicationConfirmation = () => {
   const handleUploadApplication = async () => {
     setIsUploading(true);
     try {
-      // Skip authentication and directly insert the data
-      // Using the borrower_id as a unique identifier instead of user_id
       const { error } = await supabase
         .from('tblborrowers')
         .insert([{
