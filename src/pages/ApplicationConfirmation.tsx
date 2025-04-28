@@ -1,14 +1,76 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo';
 import { useAppContext } from '@/contexts/AppContext';
 import Footer from '@/components/Footer';
+import { Button } from '@/components/ui/button';
+import { toast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ApplicationConfirmation = () => {
+  const navigate = useNavigate();
   const { applicationData } = useAppContext();
   const { borrowerId, applicationId } = applicationData;
-  
+
+  const handleUploadApplication = async () => {
+    try {
+      const { error } = await supabase
+        .from('tblborrowers')
+        .insert([{
+          user_id: (await supabase.auth.getUser()).data.user?.id,
+          borrower_id: borrowerId,
+          application_id: applicationId,
+          name: applicationData.name,
+          email: applicationData.email,
+          mobile: applicationData.mobile,
+          applying_with: applicationData.applyingWith,
+          partner_name: applicationData.partnerName,
+          relationship: applicationData.relationship,
+          current_living: applicationData.currentLiving,
+          current_address: applicationData.currentAddress,
+          application_type: applicationData.applicationType,
+          property_value: applicationData.propertyValue,
+          property_address: applicationData.propertyAddress,
+          preferred_suburb: applicationData.preferredSuburb,
+          sale_type: applicationData.saleType,
+          bank_loan_amount: applicationData.bankLoanAmount,
+          bank_name: applicationData.bankName,
+          required_equity_start_loan: applicationData.requiredEquityStartLoan,
+          contribution: applicationData.contribution,
+          employment_status: applicationData.employmentStatus,
+          partner_employment_status: applicationData.partnerEmploymentStatus,
+          employment_duration: applicationData.employmentDuration,
+          annual_salary: applicationData.annualSalary,
+          partner_annual_salary: applicationData.partnerAnnualSalary,
+          monthly_income: applicationData.monthlyIncome,
+          partner_monthly_income: applicationData.partnerMonthlyIncome,
+          occupation: applicationData.occupation,
+          partner_occupation: applicationData.partnerOccupation,
+          education: applicationData.education,
+          partner_education: applicationData.partnerEducation,
+          total_expenses: applicationData.totalExpenses,
+          loan_term: applicationData.preferredLoanTerm,
+          identification_documents: applicationData.identificationDocuments,
+          secondary_documents: applicationData.secondaryDocuments
+        }]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Success!",
+        description: "Your application has been uploaded successfully.",
+      });
+    } catch (error) {
+      console.error('Error uploading application:', error);
+      toast({
+        title: "Error",
+        description: "Failed to upload your application. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="py-4 shadow-sm">
@@ -31,7 +93,12 @@ const ApplicationConfirmation = () => {
           </p>
           
           <div className="flex justify-center mb-8">
-            <button className="btn-primary">Upload my application</button>
+            <Button 
+              onClick={handleUploadApplication}
+              className="bg-blue-900 text-white hover:bg-blue-800"
+            >
+              Upload my application
+            </Button>
           </div>
           
           <div className="bg-gray-50 p-4 rounded mb-8">
@@ -53,12 +120,16 @@ const ApplicationConfirmation = () => {
           </div>
           
           <div className="flex justify-center mb-8">
-            <button className="btn-primary">View Smart Contract Terms</button>
+            <Button className="bg-blue-900 text-white hover:bg-blue-800">
+              View Smart Contract Terms
+            </Button>
           </div>
           
           <p className="text-center">
             Investor loan bids will be sent to you in real time and you can monitor the progress of your application 24 x 7 at{' '}
-            <a href="https://www.equitystart.com.au/borrowerapplication" className="text-blue-600 hover:underline">www.equitystart.com.au/borrowerapplication</a>
+            <a href="https://www.equitystart.com.au/borrowerapplication" className="text-blue-600 hover:underline">
+              www.equitystart.com.au/borrowerapplication
+            </a>
           </p>
         </div>
         

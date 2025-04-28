@@ -9,7 +9,165 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      tblborrowers: {
+        Row: {
+          annual_salary: number | null
+          application_id: string | null
+          application_type: string | null
+          applying_with: string | null
+          bank_loan_amount: number | null
+          bank_name: string | null
+          borrower_id: string | null
+          contribution: number | null
+          created_at: string
+          current_address: string | null
+          current_living: string | null
+          education: string | null
+          email: string | null
+          employment_duration: string | null
+          employment_status: string | null
+          id: number
+          identification_documents: string[] | null
+          loan_term: number | null
+          mobile: string | null
+          monthly_income: number | null
+          name: string | null
+          occupation: string | null
+          partner_annual_salary: number | null
+          partner_education: string | null
+          partner_employment_status: string | null
+          partner_monthly_income: number | null
+          partner_name: string | null
+          partner_occupation: string | null
+          preferred_suburb: string | null
+          property_address: string | null
+          property_value: number | null
+          relationship: string | null
+          required_equity_start_loan: number | null
+          sale_type: string | null
+          secondary_documents: string[] | null
+          status: string | null
+          submitted_at: string | null
+          total_expenses: number | null
+          user_id: string | null
+        }
+        Insert: {
+          annual_salary?: number | null
+          application_id?: string | null
+          application_type?: string | null
+          applying_with?: string | null
+          bank_loan_amount?: number | null
+          bank_name?: string | null
+          borrower_id?: string | null
+          contribution?: number | null
+          created_at?: string
+          current_address?: string | null
+          current_living?: string | null
+          education?: string | null
+          email?: string | null
+          employment_duration?: string | null
+          employment_status?: string | null
+          id?: number
+          identification_documents?: string[] | null
+          loan_term?: number | null
+          mobile?: string | null
+          monthly_income?: number | null
+          name?: string | null
+          occupation?: string | null
+          partner_annual_salary?: number | null
+          partner_education?: string | null
+          partner_employment_status?: string | null
+          partner_monthly_income?: number | null
+          partner_name?: string | null
+          partner_occupation?: string | null
+          preferred_suburb?: string | null
+          property_address?: string | null
+          property_value?: number | null
+          relationship?: string | null
+          required_equity_start_loan?: number | null
+          sale_type?: string | null
+          secondary_documents?: string[] | null
+          status?: string | null
+          submitted_at?: string | null
+          total_expenses?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          annual_salary?: number | null
+          application_id?: string | null
+          application_type?: string | null
+          applying_with?: string | null
+          bank_loan_amount?: number | null
+          bank_name?: string | null
+          borrower_id?: string | null
+          contribution?: number | null
+          created_at?: string
+          current_address?: string | null
+          current_living?: string | null
+          education?: string | null
+          email?: string | null
+          employment_duration?: string | null
+          employment_status?: string | null
+          id?: number
+          identification_documents?: string[] | null
+          loan_term?: number | null
+          mobile?: string | null
+          monthly_income?: number | null
+          name?: string | null
+          occupation?: string | null
+          partner_annual_salary?: number | null
+          partner_education?: string | null
+          partner_employment_status?: string | null
+          partner_monthly_income?: number | null
+          partner_name?: string | null
+          partner_occupation?: string | null
+          preferred_suburb?: string | null
+          property_address?: string | null
+          property_value?: number | null
+          relationship?: string | null
+          required_equity_start_loan?: number | null
+          sale_type?: string | null
+          secondary_documents?: string[] | null
+          status?: string | null
+          submitted_at?: string | null
+          total_expenses?: number | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      tblinvestors: {
+        Row: {
+          created_at: string
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
+      tblusers: {
+        Row: {
+          created_at: string
+          id: number
+          last_login: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          last_login?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          last_login?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
